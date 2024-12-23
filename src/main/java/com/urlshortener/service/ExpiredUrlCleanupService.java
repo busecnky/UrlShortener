@@ -1,6 +1,7 @@
 package com.urlshortener.service;
 
 import com.urlshortener.repository.UrlShortenerRepository;
+import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -18,6 +19,7 @@ public class ExpiredUrlCleanupService {
     }
 
     @Scheduled(fixedRate = 1800000)
+    @Transactional
     public void cleanupExpiredUrls() {
         LocalDateTime now = LocalDateTime.now();
         urlShortenerRepository.deleteAllByExpiresAtBefore(now);
