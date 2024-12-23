@@ -1,0 +1,13 @@
+spring:
+    datasource:
+        driver-class-name: org.postgresql.Driver
+        url: jdbc:postgresql://localhost:5432/UrlShortenerDB
+        username: ${PGUSERNAME}
+        password: ${PGPASS}
+    jpa:
+        hibernate:
+            ddl-auto: update
+        show-sql: false
+        properties:
+            hibernate:
+                format_sql: true
